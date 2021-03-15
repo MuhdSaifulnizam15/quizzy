@@ -15,9 +15,13 @@ const logger = require('./config/logger');
 
 const app = express();
 
-mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
-    logger.info('Connected to MongoDB');
-});
+mongoose.connect(config.mongoose.url, config.mongoose.options)
+    .then(() => {
+        logger.info('Connected to MongoDB');
+    })
+    .catch(err => {
+        logger.error(err);
+    });
 
 if (config.env !== 'test') {
     app.use(morgan.successHandler);

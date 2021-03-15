@@ -1,11 +1,10 @@
 const dotenv = require('dotenv-safe');
 const path = require('path');
 const Joi = require('joi');
+const logger = require('./logger');
 
 // import .env variables
-dotenv.config({
-    path: path.join(__dirname, '../../.env')
-});
+dotenv.config({ path: path.join(__dirname, '../../.env') });
 
 const envVarsSchema = Joi.object()
     .keys({
@@ -38,7 +37,7 @@ module.exports = {
     env: envVars.NODE_ENV,
     port: envVars.PORT,
     mongoose: {
-        url: envVars.MONGODB_URL + (envVars.NODE_ENV === 'test' ? '-test' : ''),
+        url: envVars.MONGODB_URL,
         options: {
             useCreateIndex: true,
             useNewUrlParser: true,
