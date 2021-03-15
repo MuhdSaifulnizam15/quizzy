@@ -12,5 +12,6 @@ module.exports = {
     Quiz: require('./quiz.model'),
     QuizMark: require('./quiz_mark.model'),
     Subject: require('./subject.model'),
+    Token: require('./token.model'),
     User: require('./user.model'),
 };
