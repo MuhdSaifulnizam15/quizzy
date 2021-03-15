@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
-const { roles } = require('../config/roles');
-
+const { roles } = require('../../config/roles');
+ 
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     email: {
