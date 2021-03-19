@@ -7,11 +7,18 @@ const xss = require('xss-clean');
 const mongoSanitize = require('express-mongo-sanitize');
 const compression = require('compression');
 const httpStatus = require('http-status');
+const passport = require('passport');
+const favicon = require('serve-favicon');
+const path = require('path');
 
 const config = require('./config/config');
 const morgan = require('./config/morgan');
 const routes = require('./api/routes/v1');
 const logger = require('./config/logger');
+const { jwtStrategy } = require('./config/passport');
+const { authLimiter } = require('./api/middlewares/limiter');
+const { errorConverter, errorHandler } = require('./api/middlewares/error-handler');
+const ApiError = require('./api/utils/ApiError');
 
 const app = express();
 
@@ -48,21 +55,30 @@ app.use(compression());
 app.use(cors());
 app.options('*', cors());
 
+// Serve Favicon
+app.use(favicon(path.join(__dirname, '/', 'favicon.ico')));
+
+// jwt authentication
+app.use(passport.initialize());
+passport.use('jwt', jwtStrategy);
+
+// limit repeated failed requests to auth endpoints
+if (config.env === 'production') {
+    app.use('/v1/auth', authLimiter);
+}
+
 // v1 api routes
 app.use('/v1', routes);
 
 // Send back a 404 error for any unknown api request
 app.use((req, res, next) => {
-    const error = new Error();
-    error.message = 'Not found';
-    error.status = httpStatus.NOT_FOUND;
-    next(error);
+    next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
 });
 
-app.use((error, req, res, next) => {
-    res.status(error.status || httpStatus.INTERNAL_SERVER_ERROR).json({
-        error: error
-    });
-});
+// convert error to ApiError, if needed
+app.use(errorConverter);
+
+// handle error
+app.use(errorHandler);
 
 module.exports = app;

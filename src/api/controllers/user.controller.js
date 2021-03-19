@@ -1,49 +1,43 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const { body, check, validationResult } = require('express-validator');
+const httpStatus = require('http-status');
+const pick = require('../utils/pick');
+const ApiError = require('../utils/ApiError');
+const catchAsync = require('../utils/catchAsync');
+const { userService } = require('../services');
 
-const User = require('../models/user.model');
+const createUser = catchAsync(async (req, res) => {
+    const user = await userService.createUser(req.body);
+    res.status(httpStatus.CREATED).send(user);
+});
 
-exports.register = [
-    body('email').isEmail().normalizeEmail(),
-    check('password')
-        .isLength({ min: 8 })
-        .withMessage('must be at least 8 chars long')
-        .matches(/\d/)
-        .withMessage('must contain at least one number')
-        .matches('/\W|_/g')
-        .withMessage('must containe at least one special characters')
-        .not()
-        .isIn(['Asd1234!', 'abcd123!'])
-        .withMessage('do not use a common word as the password'),
+const getUsers = catchAsync(async (req, res) => {
+    const filter = pick(req.query, ['name', 'role']);
+    const options = pick(req.query, ['sortBy', 'limit', 'page']);
+    const result = await userService.queryUsers(filter, options);
+    res.send(result);
+});
 
-    body('first_name').not().isEmpty().trim().escape(),
-    body('last_name').not().isEmpty().trim().escape(),
-    (req, res, next) => {
-        User
-            .find({ email: req.body.email })
-            .exec()
-            .then(user => {
-                if(user.length < 1){
-                    return bcrypt.hash(req.body.password, 10);
-                }
-
-                const error = new Error();
-                error.message = 'User already exist in our database';
-                throw error;
-            })
-            .then(hash => {
-                const user = createUser(req.body.email, hash, req.body.first_name, req.body.last_name);
-                return user.save();
-            })
-            .then(result => {
-                return res.status(201).json({
-                    message: 'User created successfully!'
-                })
-            })
-            .catch(error => {
-                next(error);
-            });
+const getUser = catchAsync(async (req, res) => {
+    const user = await userService.getUserById(req.params.userId);
+    if (!user) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
     }
-];
+    res.send(user);
+});
+
+const updateUser = catchAsync(async (req, res) => {
+    const user = await userService.updateUserById(req.params.userId, req.body);
+    res.send(user);
+});
+
+const deleteUser = catchAsync(async (req, res) => {
+    await userService.deleteUserById(req.params.userId);
+    res.status(httpStatus.NO_CONTENT).send();
+});
+
+module.exports = {
+    createUser,
+    getUsers,
+    getUser,
+    updateUser,
+    deleteUser,
+};
