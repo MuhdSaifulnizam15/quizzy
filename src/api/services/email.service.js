@@ -39,8 +39,24 @@ If you did not request any password resets, then ignore this email.`;
   await sendEmail(to, subject, text);
 };
 
+/**
+ * Send account activation email
+ * @param {string} to
+ * @param {string} token
+ * @returns {Promise}
+ */
+const sendEmailActivationEmail = async (to, token) => {
+  const subject = 'Email Confirmation';
+  const activationUrl = `http://link-to-app/email-activation?token=${token}`;
+  const text = `Dear user, 
+  Please click thi link to activate your account: ${activationUrl}
+  If you did not request for any email activation, then ignore this email.`;  
+  await sendEmail(to, subject, text);
+}
+
 module.exports = {
   transport,
   sendEmail,
   sendResetPasswordEmail,
+  sendEmailActivationEmail,
 };

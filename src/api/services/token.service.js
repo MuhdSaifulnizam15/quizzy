@@ -72,10 +72,22 @@ const generateResetPasswordToken = async (email) => {
     return resetPassswordToken;
 };
 
+const generateEmailActivationToken = async (email) => {
+    const user = await userService.getUserByEmail(email);
+    if(!user){
+        throw new Error('No user found with this email');
+    }
+    const expires = moment().add(config.jwt.emailActivationExpirationMinutes, 'minutes');
+    const emailActivationToken = generateToken(user.id, expires, tokenTypes.EMAIL_ACTIVATION);
+    await saveToken(emailActivationToken, user.id, expires, tokenTypes.EMAIL_ACTIVATION);
+    return emailActivationToken;
+}
+
 module.exports = {
     generateToken,
     saveToken,
     verifyToken,
     generateAuthTokens,
-    generateResetPasswordToken
+    generateResetPasswordToken,
+    generateEmailActivationToken,
 }
