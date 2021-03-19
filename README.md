@@ -15,7 +15,7 @@ Install the dependencies:
 npm install
 ```
 
-Set the environment variables:joi
+Set the environment variables:
 ```bash
 cp .env.example .env
 
