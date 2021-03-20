@@ -16,7 +16,7 @@ const loginUserWithEmailAndPassword = async (email, password) => {
     if(!user || !(await user.isPasswordMatch(password))) {
         throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect email or password');
     } else if(!user.active){
-        throw new ApiError(httpStatus.UNAUTHORIZED, 'Account is not confirmed. Please confirm your account.');
+        throw new ApiError(httpStatus.UNAUTHORIZED, 'Account is inactive. Please activate your account by clicking our verification link that has been sent to your email address.');
     }
     return user;
 };
@@ -63,7 +63,7 @@ const refreshAuth = async (refreshToken) => {
  * @param {string} newPassword
  * @returns {Promise}
  */
-const resetPassword = async (resetPassswordToken, newPassword) => {
+const resetPassword = async (resetPasswordToken, newPassword) => {
     try {
         const resetPasswordTokenDoc = await tokenService.verifyToken(resetPasswordToken, tokenTypes.RESET_PASSWORD);
         const user = await userService.getUserById(resetPasswordTokenDoc.user);
@@ -77,9 +77,26 @@ const resetPassword = async (resetPassswordToken, newPassword) => {
     }
 };
 
+const verifyEmail = async (emailVerificationToken) => {
+    try {
+        /** @TODO check whether account is already activated, for this we need to get the user id. Token is automatically deleted after success match found with user id. */
+        const emailVerificationTokenDoc = await tokenService.verifyToken(emailVerificationToken, tokenTypes.EMAIL_ACTIVATION);
+        console.log(emailVerificationTokenDoc);
+        const user = await userService.getUserById(emailVerificationTokenDoc.user);
+        if(!user) {
+            throw new Error();
+        }
+        await userService.updateUserById(user.id, { active: true });
+        await Token.deleteMany({ user: user.id, type: tokenTypes.EMAIL_ACTIVATION });
+    } catch(error){
+        throw new ApiError(httpStatus.UNAUTHORIZED, 'Failed to verify your email');
+    }
+}
+
 module.exports = {
     loginUserWithEmailAndPassword,
     logout,
     refreshAuth,
     resetPassword,
+    verifyEmail,
 };
