@@ -27,10 +27,10 @@ const errorConverter = (err, req, res, next) => {
     const response = {
       code: statusCode,
       message,
-      ...(config.env === 'development' && { stack: err.stack }),
+      ...(config.env === 'development' || config.env === 'local'  && { stack: err.stack }),
     };
   
-    if (config.env === 'development') {
+    if (config.env === 'development' || config.env === 'local' ) {
       logger.error(err);
     }
   
