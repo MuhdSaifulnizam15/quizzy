@@ -59,7 +59,7 @@ The environment variables can be found and modified in the `.env` file. They com
 PORT=3000
 
 # URL of the Mongo DB
-MONGODB_URL=mongodb://127.0.0.1:27017/node-boilerplate
+MONGODB_URL=mongodb://127.0.0.1:27017/quizzy-local
 
 # JWT
 # JWT secret key
@@ -84,7 +84,6 @@ EMAIL_FROM=support@yourapp.com
 src\
  |--api
   |--controllers\    # Route controllers (controller layer)
-  |--docs\           # Swagger files
   |--middlewares\    # Custom express middlewares
   |--models\         # Mongoose models (data layer)
   |--routes\         # Routes
@@ -95,10 +94,6 @@ src\
  |--app.js          # Express app
  |--server.js        # App entry point
 ```
-
-## API Documentation
-
-To view the list of available APIs and their specifications, run the server and go to `http://localhost:3000/v1/docs` in your browser. This documentation page is automatically generated using the [swagger](https://swagger.io/) definitions written as comments in the route files.
 
 ### API Endpoints
 
@@ -117,3 +112,10 @@ List of available routes:
 `GET /v1/users/:userId` - get user\
 `PATCH /v1/users/:userId` - update user\
 `DELETE /v1/users/:userId` - delete user
+
+**Subject routes**:\
+`POST /v1/subjects` - create a subject\
+`GET /v1/subjects` - get all subjects\
+`GET /v1/subjects/:userId` - get subject\
+`PATCH /v1/subjects/:userId` - update subject\
+`DELETE /v1/subjects/:userId` - delete subject
