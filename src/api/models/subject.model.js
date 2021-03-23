@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
 const subjectSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     name: {
         type: String,
         required: true
