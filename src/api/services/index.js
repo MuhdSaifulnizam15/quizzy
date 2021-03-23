@@ -3,4 +3,5 @@ module.exports = {
     emailService: require('./email.service'),
     tokenService: require('./token.service'),
     userService: require('./user.service'),
+    subjectService: require('./subject.service'),
 }
