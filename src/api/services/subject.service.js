@@ -2,6 +2,14 @@ const httpStatus = require('http-status');
 const { Subject } = require('../models');
 const ApiError = require('../utils/ApiError');
 
+const createSubject = async (userBody) => {
+    if(await Subject.isCodeTaken(userBody.code)) {
+        throw new ApiError(httpStatus.BAD_REQUEST, 'Code already taken');
+    }
+    const subject = await Subject.create(userBody);
+    return subject;
+};
+
 const querySubjects = async (filter, options) => {
     const subjects = await Subject.paginate(filter, options);
     return subjects;
@@ -28,13 +36,14 @@ const updateSubjectById = async (subjectId, updateBody) => {
 const deleteSubjectById = async (subjectId) => {
     const subject = await getSubjectById(subjectId);
     if(!subject){
-        throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+        throw new ApiError(httpStatus.NOT_FOUND, 'Subject not found');
     }
     await subject.remove();
     return subject;
 }
 
 module.exports = {
+    createSubject,
     querySubjects,
     getSubjectById,
     getSubjectByName,

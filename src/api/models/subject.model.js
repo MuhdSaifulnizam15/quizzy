@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
 const subjectSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     name: {
         type: String,
         required: true
@@ -19,5 +18,10 @@ const subjectSchema = mongoose.Schema({
 
 subjectSchema.plugin(toJSON);
 subjectSchema.plugin(paginate);
+
+subjectSchema.statics.isCodeTaken = async function (code, excludeSubjectId) {
+    const subject = await this.findOne({ code, _id: { $ne: excludeSubjectId } });
+    return !!subject;
+};
 
 module.exports = mongoose.model('Subject', subjectSchema);
