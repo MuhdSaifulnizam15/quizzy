@@ -3,6 +3,9 @@ const { Subject } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 const createSubject = async (userBody) => {
+    if(await Subject.isCodeTaken(userBody.code)) {
+        throw new ApiError(httpStatus.BAD_REQUEST, 'Code already taken');
+    }
     const subject = await Subject.create(userBody);
     return subject;
 };
