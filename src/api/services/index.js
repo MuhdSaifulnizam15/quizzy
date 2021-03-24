@@ -6,4 +6,5 @@ module.exports = {
     subjectService: require('./subject.service'),
     classroomService: require('./classroom.service'),
     assignmentService: require('./assignment.service'),
+    quizService: require('./quiz.service'),
 };
