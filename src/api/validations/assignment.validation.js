@@ -1,0 +1,32 @@
+
+const Joi = require('joi');
+const { password } = require('./custom.validation');
+
+const createAssignment = {
+    body: Joi.object().keys({
+        title: Joi.string().required(),
+        dateline: Joi.date(),
+        priotity: Joi.string(),
+        subject: Joi.string().required(),
+        quiz: Joi.string().required(),
+        classroom: Joi.string().required(),
+    }),
+};
+
+const updateAssignment = {
+    params: Joi.object().keys({
+        assignmentId: Joi.string().required(),
+    })
+};
+
+const deleteAssignment = {
+    params: Joi.object().keys({
+        assignmentId: Joi.string().required(),
+    })
+};
+
+module.exports = {
+    createAssignment,
+    updateAssignment,
+    deleteAssignment,
+};

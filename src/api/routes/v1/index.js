@@ -3,6 +3,7 @@ const authRoutes = require('./auth.route');
 const userRoutes = require('./user.route');
 const subjectRoutes = require('./subject.route');
 const classroomRoutes = require('./classroom.route');
+const assignmentRoutes = require('./assignment.route');
 const quizRoutes = require('./quiz.route');
 
 const router = express.Router();
@@ -31,6 +32,9 @@ const defaultRoutes = [
       route: classroomRoutes,
     },
     {
+      path: '/assignments',
+      route: assignmentRoutes,
+    },
       path: '/quizzes',
       route: quizRoutes,
     }
