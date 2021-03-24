@@ -6,7 +6,7 @@ const createAssignment = {
     body: Joi.object().keys({
         title: Joi.string().required(),
         dateline: Joi.date(),
-        priotity: Joi.string(),
+        priority: Joi.string(),
         subject: Joi.string().required(),
         quiz: Joi.string().required(),
         classroom: Joi.string().required(),

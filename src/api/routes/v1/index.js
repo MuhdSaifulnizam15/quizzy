@@ -35,6 +35,7 @@ const defaultRoutes = [
       path: '/assignments',
       route: assignmentRoutes,
     },
+    {
       path: '/quizzes',
       route: quizRoutes,
     }
