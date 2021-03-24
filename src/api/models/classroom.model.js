@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { programmeTypes } = require('../../config/programme');
+const { programmeTypes } = require('../../config/constants');
 const { toJSON, paginate } = require('./plugins');
 
 const classroomSchema = mongoose.Schema({

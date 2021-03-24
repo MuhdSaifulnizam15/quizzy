@@ -5,4 +5,5 @@ module.exports = {
     userService: require('./user.service'),
     subjectService: require('./subject.service'),
     classroomService: require('./classroom.service'),
+    assignmentService: require('./assignment.service'),
 };

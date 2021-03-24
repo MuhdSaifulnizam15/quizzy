@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const { priority } = require('../../config/constants');
+const { toJSON, paginate } = require('./plugins');
 
 const assignmentSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     title: {
         type: String,
         required: true
@@ -10,21 +11,29 @@ const assignmentSchema = mongoose.Schema({
         type: Date
     },
     priority: {
-        type: Number,
+        type: String,
+        enum: [ priority.low, priority.medium, priority.high ],
+        default: priority.low,
+        uppercase: true,
+    },
+    subject: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subject',
         required: true
     },
-    subject_id: {
-        type: Number,
+    quiz: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Quiz',
         required: true
     },
-    quiz_id: {
-        type: Number,
-        required: true
-    },
-    classroom_id: {
-        type: Number,
+    classroom: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Classroom',
         required: true
     }
 });
+
+assignmentSchema.plugin(toJSON);
+assignmentSchema.plugin(paginate);
 
 module.exports = mongoose.model('Assignment', assignmentSchema);

@@ -3,4 +3,5 @@ module.exports = {
     userValidation: require('./user.validation'),
     subjectValidation: require('./subject.validation'),
     classroomValidation: require('./classroom.validation'),
+    assignmentValidation: require('./assignment.validation'),
 };
