@@ -125,3 +125,17 @@ List of available routes:
 `GET /v1/classrooms/:classroomId` - get classroom\
 `PATCH /v1/classrooms/:classroomId` - update classroom\
 `DELETE /v1/classrooms/:classroomId` - delete classroom
+
+**Quiz routes**:\
+`POST /v1/quizzes` - create a quiz\
+`GET /v1/quizzes` - get all quizzes\
+`GET /v1/quizzes/:quizId` - get quiz\
+`PATCH /v1/quizzes/:quizId` - update quiz\
+`DELETE /v1/quizzes/:quizId` - delete quiz
+
+**Assignment routes**:\
+`POST /v1/assignments` - create a assignment\
+`GET /v1/assignments` - get all assignments\
+`GET /v1/assignments/:assignmentId` - get assignment\
+`PATCH /v1/assignments/:assignmentId` - update assignment\
+`DELETE /v1/assignments/:assignmentId` - delete assignment
