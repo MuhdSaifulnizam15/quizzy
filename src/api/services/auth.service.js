@@ -81,7 +81,7 @@ const verifyEmail = async (emailVerificationToken) => {
     try {
         /** @TODO check whether account is already activated, for this we need to get the user id. Token is automatically deleted after success match found with user id. */
         const emailVerificationTokenDoc = await tokenService.verifyToken(emailVerificationToken, tokenTypes.EMAIL_ACTIVATION);
-        console.log(emailVerificationTokenDoc);
+        // console.log(emailVerificationTokenDoc);
         const user = await userService.getUserById(emailVerificationTokenDoc.user);
         if(!user) {
             throw new Error();

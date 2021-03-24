@@ -32,11 +32,10 @@ cp .env.example .env
 
 ## Features
 - **NoSQL database**: [MongoDB](https://www.mongodb.com) object data modeling using [Mongoose](https://mongoosejs.com)
-- **Authentication and authorization**: using [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken#readme)
+- **Authentication and authorization**: using [passport](http://www.passportjs.org)
 - **Validation**: request data validation using [Joi](https://github.com/hapijs/joi)
 - **Logging**: using [winston](https://github.com/winstonjs/winston) and [morgan](https://github.com/expressjs/morgan)
 - **Error handling**: centralized error handling mechanism
-- **API documentation**: with [swagger-jsdoc](https://github.com/Surnet/swagger-jsdoc) and [swagger-ui-express](https://github.com/scottie1984/swagger-ui-express)
 - **Environment variables**: using [dotenv](https://github.com/motdotla/dotenv)
 - **Security**: set security HTTP headers using [helmet](https://helmetjs.github.io)
 - **Santizing**: sanitize request data against xss and query injection
@@ -59,7 +58,7 @@ The environment variables can be found and modified in the `.env` file. They com
 PORT=3000
 
 # URL of the Mongo DB
-MONGODB_URL=mongodb://127.0.0.1:27017/node-boilerplate
+MONGODB_URL=mongodb://127.0.0.1:27017/quizzy-local
 
 # JWT
 # JWT secret key
@@ -84,7 +83,6 @@ EMAIL_FROM=support@yourapp.com
 src\
  |--api
   |--controllers\    # Route controllers (controller layer)
-  |--docs\           # Swagger files
   |--middlewares\    # Custom express middlewares
   |--models\         # Mongoose models (data layer)
   |--routes\         # Routes
@@ -95,10 +93,6 @@ src\
  |--app.js          # Express app
  |--server.js        # App entry point
 ```
-
-## API Documentation
-
-To view the list of available APIs and their specifications, run the server and go to `http://localhost:3000/v1/docs` in your browser. This documentation page is automatically generated using the [swagger](https://swagger.io/) definitions written as comments in the route files.
 
 ### API Endpoints
 
@@ -117,3 +111,17 @@ List of available routes:
 `GET /v1/users/:userId` - get user\
 `PATCH /v1/users/:userId` - update user\
 `DELETE /v1/users/:userId` - delete user
+
+**Subject routes**:\
+`POST /v1/subjects` - create a subject\
+`GET /v1/subjects` - get all subjects\
+`GET /v1/subjects/:subjectId` - get subject\
+`PATCH /v1/subjects/:subjectId` - update subject\
+`DELETE /v1/subjects/:subjectId` - delete subject
+
+**Classroom routes**:\
+`POST /v1/classrooms` - create a classroom\
+`GET /v1/classrooms` - get all classrooms\
+`GET /v1/classrooms/:classroomId` - get classroom\
+`PATCH /v1/classrooms/:classroomId` - update classroom\
+`DELETE /v1/classrooms/:classroomId` - delete classroom
