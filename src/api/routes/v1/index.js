@@ -6,6 +6,7 @@ const classroomRoutes = require('./classroom.route');
 const assignmentRoutes = require('./assignment.route');
 const quizRoutes = require('./quiz.route');
 const motivationQuoteRoutes = require('./motivation_quote.route');
+const stateRoutes = require('./state.route');
 
 const router = express.Router();
 
@@ -43,6 +44,10 @@ const defaultRoutes = [
     {
       path: '/quotes',
       route: motivationQuoteRoutes,
+    },
+    {
+      path: '/states',
+      route: stateRoutes,
     },
 ];
 

@@ -14,4 +14,5 @@ module.exports = {
     Subject: require('./subject.model'),
     Token: require('./token.model'),
     User: require('./user.model'),
+    State: require('./state.model'),
 };

@@ -6,4 +6,5 @@ module.exports = {
     assignmentValidation: require('./assignment.validation'),
     quizValidation: require('./quiz.validation'),
     motivationQuoteValidation: require('./motivation_quote.validation'),
+    stateValidation: require('./state.validation'),
 };

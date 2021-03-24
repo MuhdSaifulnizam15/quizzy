@@ -8,4 +8,5 @@ module.exports = {
     assignmentService: require('./assignment.service'),
     quizService: require('./quiz.service'),
     motivationQuoteService: require('./motivation_quote.service'),
+    stateService: require('./state.service'),
 };

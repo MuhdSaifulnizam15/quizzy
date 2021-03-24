@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
+const { toJSON } = require('./plugins');
 
 const stateSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    id: {
+    state_id: {
         type: Number,
         required: true,
         index: true,
@@ -10,8 +10,21 @@ const stateSchema = mongoose.Schema({
     },
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
 });
+
+stateSchema.plugin(toJSON);
+
+stateSchema.statics.isNameTaken = async function (name, excludeStateId) {
+    const state = await this.findOne({ name, _id: { $ne: excludeStateId } });
+    return !!state;
+};
+
+stateSchema.statics.isIdTaken = async function (state_id, excludeStateId) {
+    const state = await this.findOne({ state_id, _id: { $ne: excludeStateId } });
+    return !!state;
+};
 
 module.exports = mongoose.model('State', stateSchema);
