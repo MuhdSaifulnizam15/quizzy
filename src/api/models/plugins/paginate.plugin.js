@@ -55,13 +55,20 @@ const paginate = (schema) => {
       return Promise.all([countPromise, docsPromise]).then((values) => {
         const [totalResults, results] = values;
         const totalPages = Math.ceil(totalResults / limit);
-        const result = {
-          results,
-          page,
-          limit,
-          totalPages,
-          totalResults,
-        };
+        let result;
+        if(filter._id){
+          result = {
+            results,
+          };
+        } else {
+          result = {
+            results,
+            page,
+            limit,
+            totalPages,
+            totalResults,
+          };
+        }
         return Promise.resolve(result);
       });
     };
