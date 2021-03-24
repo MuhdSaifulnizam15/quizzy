@@ -139,3 +139,17 @@ List of available routes:
 `GET /v1/assignments/:assignmentId` - get assignment\
 `PATCH /v1/assignments/:assignmentId` - update assignment\
 `DELETE /v1/assignments/:assignmentId` - delete assignment
+
+**Motivational Quote routes**:\
+`POST /v1/quotes` - create a quote\
+`GET /v1/quotes` - get all quotes\
+`GET /v1/quotes/:quoteId` - get quote\
+`PATCH /v1/quotes/:quoteId` - update quote\
+`DELETE /v1/quotes/:quoteId` - delete quote
+
+**State routes**:\
+`POST /v1/states` - create a state\
+`GET /v1/states` - get all states\
+`GET /v1/states/:stateId` - get state\
+`PATCH /v1/states/:stateId` - update state\
+`DELETE /v1/states/:stateId` - delete state
