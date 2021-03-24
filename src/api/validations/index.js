@@ -5,4 +5,5 @@ module.exports = {
     classroomValidation: require('./classroom.validation'),
     assignmentValidation: require('./assignment.validation'),
     quizValidation: require('./quiz.validation'),
+    motivationQuoteValidation: require('./motivation_quote.validation'),
 };

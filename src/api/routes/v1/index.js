@@ -5,6 +5,7 @@ const subjectRoutes = require('./subject.route');
 const classroomRoutes = require('./classroom.route');
 const assignmentRoutes = require('./assignment.route');
 const quizRoutes = require('./quiz.route');
+const motivationQuoteRoutes = require('./motivation_quote.route');
 
 const router = express.Router();
 
@@ -38,7 +39,11 @@ const defaultRoutes = [
     {
       path: '/quizzes',
       route: quizRoutes,
-    }
+    },
+    {
+      path: '/quotes',
+      route: motivationQuoteRoutes,
+    },
 ];
 
 defaultRoutes.forEach((route) => {

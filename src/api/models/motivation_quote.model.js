@@ -1,15 +1,25 @@
 const mongoose = require('mongoose');
+const { toJSON, paginate } = require('./plugins');
 
 const motivationQuoteSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     quote: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     author: {
         type: String,
-        required: true
+        default: 'Unknown',
+        capitalize: true,
     }
 });
+
+motivationQuoteSchema.plugin(toJSON);
+motivationQuoteSchema.plugin(paginate);
+
+motivationQuoteSchema.statics.isQuoteTaken = async function (quote, excludeMotivationQuoteId) {
+    const motivationQuote = await this.findOne({ quote, _id: { $ne: excludeMotivationQuoteId } });
+    return !!motivationQuote;
+};
 
 module.exports = mongoose.model('MotivationQuote', motivationQuoteSchema);

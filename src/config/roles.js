@@ -2,10 +2,9 @@ const roles = ['student', 'tutor', 'admin'];
 
 const roleRights = new Map();
 
-const getPermissionList = ['getUser', 'getUsers', 'getSubject', 'getSubjects', 'getClassroom', 'getClassrooms', 'getAssignment', 'getAssignments', 'getQuiz', 'getQuizzes'];
+const getPermissionList = ['getUser', 'getUsers', 'getSubject', 'getSubjects', 'getClassroom', 'getClassrooms', 'getAssignment', 'getAssignments', 'getQuiz', 'getQuizzes', 'getMotivationQuote', 'getMotivationQuotes'];
 const studentPermissionList = [];
-const tutorManagePermissionList = ['manageSubjects', 'manageClassroom', 'manageAssignment', 'manageQuiz'];
-
+const tutorManagePermissionList = ['manageSubjects', 'manageClassroom', 'manageAssignment', 'manageQuiz', 'manageMotivationQuote'];
 const adminManagePermissionList = ['manageUsers'];
 
 roleRights.set(roles[0], studentPermissionList.concat(getPermissionList));

@@ -5,4 +5,5 @@ module.exports = {
     classroomController: require('./classroom.controller'),
     assignmentController: require('./assignment.controller'),
     quizController: require('./quiz.controller'),
+    motivationQuoteController: require('./motivation_quote.controller'),
 };
