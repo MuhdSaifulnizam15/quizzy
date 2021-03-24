@@ -1,9 +1,15 @@
 const roles = ['student', 'tutor', 'admin'];
 
 const roleRights = new Map();
-roleRights.set(roles[0], ['getUsers']);
-roleRights.set(roles[1], []);
-roleRights.set(roles[2], ['getUser', 'getUsers', 'manageUsers', 'getSubject', 'getSubjects', 'manageSubjects']);
+
+const getPermissionList = ['getUser', 'getUsers', 'getSubject', 'getSubjects', 'getClassroom', 'getClassrooms'];
+const studentPermissionList = [];
+const tutorManagePermissionList = ['manageSubjects', 'manageClassroom'];
+const adminManagePermissionList = ['manageUsers'];
+
+roleRights.set(roles[0], studentPermissionList.concat(getPermissionList));
+roleRights.set(roles[1], tutorManagePermissionList.concat(getPermissionList, studentPermissionList));
+roleRights.set(roles[2], adminManagePermissionList.concat(getPermissionList, studentPermissionList, tutorManagePermissionList));
 
 module.exports = {
   roles,

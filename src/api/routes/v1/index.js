@@ -2,6 +2,7 @@ const express = require("express");
 const authRoutes = require('./auth.route');
 const userRoutes = require('./user.route');
 const subjectRoutes = require('./subject.route');
+const classroomRoutes = require('./classroom.route');
 
 const router = express.Router();
 
@@ -23,6 +24,10 @@ const defaultRoutes = [
     {
       path: '/subjects',
       route: subjectRoutes,
+    },
+    {
+      path: '/classrooms',
+      route: classroomRoutes,
     },
 ];
 
