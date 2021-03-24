@@ -115,6 +115,13 @@ List of available routes:
 **Subject routes**:\
 `POST /v1/subjects` - create a subject\
 `GET /v1/subjects` - get all subjects\
-`GET /v1/subjects/:userId` - get subject\
-`PATCH /v1/subjects/:userId` - update subject\
-`DELETE /v1/subjects/:userId` - delete subject
+`GET /v1/subjects/:subjectId` - get subject\
+`PATCH /v1/subjects/:subjectId` - update subject\
+`DELETE /v1/subjects/:subjectId` - delete subject
+
+**Classroom routes**:\
+`POST /v1/classrooms` - create a classroom\
+`GET /v1/classrooms` - get all classrooms\
+`GET /v1/classrooms/:classroomId` - get classroom\
+`PATCH /v1/classrooms/:classroomId` - update classroom\
+`DELETE /v1/classrooms/:classroomId` - delete classroom
