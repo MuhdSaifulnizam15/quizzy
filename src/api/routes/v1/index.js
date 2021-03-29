@@ -7,6 +7,7 @@ const assignmentRoutes = require('./assignment.route');
 const quizRoutes = require('./quiz.route');
 const motivationQuoteRoutes = require('./motivation_quote.route');
 const stateRoutes = require('./state.route');
+const cityRoutes = require('./city.route');
 
 const router = express.Router();
 
@@ -48,6 +49,10 @@ const defaultRoutes = [
     {
       path: '/states',
       route: stateRoutes,
+    },
+    {
+      path: '/city',
+      route: cityRoutes,
     },
 ];
 

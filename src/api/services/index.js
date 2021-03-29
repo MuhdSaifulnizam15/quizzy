@@ -9,4 +9,5 @@ module.exports = {
     quizService: require('./quiz.service'),
     motivationQuoteService: require('./motivation_quote.service'),
     stateService: require('./state.service'),
+    cityService: require('./city.service'),
 };

@@ -7,4 +7,5 @@ module.exports = {
     quizValidation: require('./quiz.validation'),
     motivationQuoteValidation: require('./motivation_quote.validation'),
     stateValidation: require('./state.validation'),
+    cityValidation: require('./city.validation'),
 };

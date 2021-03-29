@@ -3,7 +3,6 @@ module.exports = {
     Assignment: require('./assignment.model'),
     City: require('./city.model'),
     Classroom: require('./classroom.model'),
-    District: require('./state.model'),
     MotivationQuote: require('./motivation_quote.model'),
     Question: require('./question.model'),
     QuestionAnswer: require('./question_answer.model'),

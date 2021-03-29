@@ -7,4 +7,5 @@ module.exports = {
     quizController: require('./quiz.controller'),
     motivationQuoteController: require('./motivation_quote.controller'),
     stateController: require('./state.controller'),
+    cityController: require('./city.controller'),
 };

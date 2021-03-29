@@ -1,17 +1,24 @@
 const mongoose = require('mongoose');
+const { toJSON } = require('./plugins');
 
 const citySchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     state_id: {
-        type: Number,
-        required: true,
-        index: true,
-        unique: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subject',
+        required: true
     },
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     }
 });
+
+citySchema.plugin(toJSON);
+
+citySchema.statics.isNameTaken = async function (name, excludeCityId) {
+    const city = await this.findOne({ name, _id: { $ne: excludeCityId }});
+    return !!city;
+};
 
 module.exports = mongoose.model('City', citySchema);
