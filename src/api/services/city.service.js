@@ -16,17 +16,17 @@ const createCity = async (userBody) => {
 };
 
 const getAllCity = async () => {
-    const citys = await City.find({});
+    const citys = await City.find({}).populate(['state_id']);
     return citys;
 };
 
 const getCityByStateId = async (stateId) => {
-    const city = await City.find({ state_id: stateId });
+    const city = await City.find({ state_id: stateId }).populate(['state_id']);
     return city;
 };
 
 const getCityById = async (id) => {
-    return City.findById(id);
+    return City.findById(id).populate(['state_id']);
 };
 
 const updateCityById = async (cityId, updateBody) => {

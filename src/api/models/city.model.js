@@ -4,7 +4,7 @@ const { toJSON } = require('./plugins');
 const citySchema = mongoose.Schema({
     state_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Subject',
+        ref: 'State',
         required: true
     },
     name: {

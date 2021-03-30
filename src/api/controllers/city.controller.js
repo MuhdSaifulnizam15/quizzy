@@ -5,12 +5,12 @@ const { cityService } = require('../services');
 
 const createCity = catchAsync(async (req, res) => {
     const city = await cityService.createCity(req.body);
-    res.status(httpStatus.CREATED).send(city);
+    res.status(httpStatus.CREATED).send({ status: true, code: '0000', city});
 });
 
 const getCitys = catchAsync(async (req, res) => {
     const result = await cityService.getAllCity();
-    res.send(result);
+    res.send({ status: true, code: '0000', result });
 });
 
 const getCityByState = catchAsync(async (req, res) => {
@@ -18,7 +18,7 @@ const getCityByState = catchAsync(async (req, res) => {
     if(!result){
         throw new ApiError(httpStatus.NOT_FOUND, 'City not found');
     }
-    res.send(result);
+    res.send({ status: true, code: '0000', result });
 });
 
 const getCity = catchAsync(async (req, res) => {
@@ -26,17 +26,17 @@ const getCity = catchAsync(async (req, res) => {
     if(!result){
         throw new ApiError(httpStatus.NOT_FOUND, 'City not found');
     }
-    res.send(result);
+    res.send({ status: true, code: '0000', result });
 });
 
 const updateCity = catchAsync(async (req, res) => {
     const city = await cityService.updateCityById(req.params.cityId, req.body);
-    res.send(city);
+    res.send({ status: true, code: '0000', city });
 });
 
 const deleteCity = catchAsync(async (req, res) => {
     await cityService.deleteCityById(req.params.cityId);
-    res.status(httpStatus.NO_CONTENT).send({ message: 'City successfully deleted' });
+    res.send({ status: true, code: '0000', message: 'City successfully deleted' });
 });
 
 module.exports = {

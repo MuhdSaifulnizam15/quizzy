@@ -10,13 +10,13 @@ const createCity = {
 
 const updateCity = {
     params: Joi.object().keys({
-        stateId: Joi.string().required(),
+        cityId: Joi.string().required(),
     })
 };
 
 const deleteCity = {
     params: Joi.object().keys({
-        stateId: Joi.string().required(),
+        cityId: Joi.string().required(),
     })
 };
 
