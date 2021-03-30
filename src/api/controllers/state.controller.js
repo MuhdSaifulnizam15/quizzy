@@ -5,12 +5,12 @@ const { stateService } = require('../services');
 
 const createState = catchAsync(async (req, res) => {
     const state = await stateService.createState(req.body);
-    res.status(httpStatus.CREATED).send(state);
+    res.status(httpStatus.CREATED).send({ status: true, code: '0000', state });
 });
 
 const getStates = catchAsync(async (req, res) => {
     const result = await stateService.getAllState();
-    res.send(result);
+    res.send({ status: true, code: '0000', result });
 });
 
 const getState = catchAsync(async (req, res) => {
@@ -18,17 +18,17 @@ const getState = catchAsync(async (req, res) => {
     if(!result){
         throw new ApiError(httpStatus.NOT_FOUND, 'State not found');
     }
-    res.send(result);
+    res.send({ status: true, code: '0000', result });
 });
 
 const updateState = catchAsync(async (req, res) => {
     const state = await stateService.updateStateById(req.params.stateId, req.body);
-    res.send(state);
+    res.send({ status: true, code: '0000', state });
 });
 
 const deleteState = catchAsync(async (req, res) => {
     await stateService.deleteStateById(req.params.stateId);
-    res.status(httpStatus.NO_CONTENT).send({ message: 'State successfully deleted' });
+    res.send({ status: true, code: '0000', message: 'State successfully deleted' });
 });
 
 module.exports = {

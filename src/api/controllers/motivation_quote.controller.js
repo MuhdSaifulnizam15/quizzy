@@ -11,7 +11,7 @@ const createMotivationQuote = catchAsync(async (req, res) => {
 
 const getMotivationQuotes = catchAsync(async (req, res) => {
     const filter = pick(req.query, ['quote', 'author']);
-    const options = pick(req.query, ['sortBy', 'populate', 'limit', 'page']);
+    const options = pick(req.query, ['sortBy', 'limit', 'page']);
     const result = await motivationQuoteService.queryMotivationQuotes(filter, options);
     res.send(result);
 });
@@ -33,7 +33,7 @@ const updateMotivationQuote = catchAsync(async (req, res) => {
 
 const deleteMotivationQuote = catchAsync(async (req, res) => {
     await motivationQuoteService.deleteMotivationQuoteById(req.params.motivationQuoteId);
-    res.status(httpStatus.NO_CONTENT).send({ message: 'Motivation Quote successfully deleted' });
+    res.send({ message: 'Motivation Quote successfully deleted' });
 });
 
 module.exports = {

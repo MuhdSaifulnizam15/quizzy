@@ -16,11 +16,11 @@ const queryClassrooms = async (filter, options) => {
 };
 
 const getClassroomById = async (id) => {
-    return Classroom.findById(id);
+    return Classroom.findById(id).populate(['subject','tutor']);
 };
 
 const getClassroomByTutorId = async (id) => {
-    return Classroom.find({ tutor: id });
+    return Classroom.find({ tutor: id }).populate(['subject','tutor']);
 }
 
 const updateClassroomById = async (classroomId, updateBody) => {

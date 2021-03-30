@@ -6,34 +6,33 @@ const { assignmentService } = require('../services');
 
 const createAssignment = catchAsync(async (req, res) => {
     const assignment = await assignmentService.createAssignment(req.body);
-    res.status(httpStatus.CREATED).send(assignment);
+    res.status(httpStatus.CREATED).send({ status: true, code: '0000', assignment });
 });
 
 const getAssignments = catchAsync(async (req, res) => {
     const filter = pick(req.query, ['title', 'dateline', 'priority', 'subject', 'quiz', 'classroom']);
-    const options = pick(req.query, ['sortBy', 'populate', 'limit', 'page']);
+    const options = pick(req.query, ['sortBy', 'limit', 'page']);
+    options.populate = 'subject,quiz,classroom';
     const result = await assignmentService.queryAssignments(filter, options);
-    res.send(result);
+    res.send({ status: true, code: '0000', result });
 });
 
 const getAssignment = catchAsync(async (req, res) => {
-    const filter = { _id: req.params.assignmentId };
-    const options = { populate: 'subject,quiz,classroom' };
-    const result = await assignmentService.queryAssignments(filter, options);
-    if(result.results.length === 0){
+    const assignment = await assignmentService.getAssignmentById(req.params.assignmentId);
+    if (!assignment) {
         throw new ApiError(httpStatus.NOT_FOUND, 'Assignment not found');
     }
-    res.send(result);
+    res.send({ status: true, code: '0000', assignment });
 });
 
 const updateAssignment = catchAsync(async (req, res) => {
     const assignment = await assignmentService.updateAssignmentById(req.params.assignmentId, req.body);
-    res.send(assignment);
+    res.send({ status: true, code: '0000', assignment });
 });
 
 const deleteAssignment = catchAsync(async (req, res) => {
     await assignmentService.deleteAssignmentById(req.params.assignmentId);
-    res.status(httpStatus.NO_CONTENT).send({ message: 'Assignment successfully deleted' });
+    res.send({ status: true, code: '0000',  message: 'Assignment successfully deleted' });
 });
 
 module.exports = {

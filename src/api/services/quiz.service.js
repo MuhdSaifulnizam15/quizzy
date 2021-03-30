@@ -13,7 +13,7 @@ const queryQuizzes = async (filter, options) => {
 };
 
 const getQuizById = async (id) => {
-    return Quiz.findById(id);
+    return Quiz.findById(id).populate(['subject']);
 };
 
 const updateQuizById = async (quizId, updateBody) => {

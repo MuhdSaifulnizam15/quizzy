@@ -6,14 +6,14 @@ const { subjectService } = require('../services');
 
 const createSubject = catchAsync(async (req, res) => {
     const subject = await subjectService.createSubject(req.body);
-    res.status(httpStatus.CREATED).send(subject);
+    res.status(httpStatus.CREATED).send({ status: true, code: '0000', subject });
 });
 
 const getSubjects = catchAsync(async (req, res) => {
     const filter = pick(req.query, ['name', 'code']);
     const options = pick(req.query, ['sortBy', 'limit', 'page']);
     const result = await subjectService.querySubjects( filter, options);
-    res.send(result);
+    res.send({ status: true, code: '0000', result });
 });
 
 const getSubject = catchAsync(async (req, res) => {
@@ -21,17 +21,17 @@ const getSubject = catchAsync(async (req, res) => {
     if(!subject){
         throw new ApiError(httpStatus.NOT_FOUND, 'Subject not found');
     }
-    res.send(subject);
+    res.send({ status: true, code: '0000', subject });
 });
 
 const updateSubject = catchAsync(async (req, res) => {
     const subject = await subjectService.updateSubjectById(req.params.subjectId, req.body);
-    res.send(subject);
+    res.send({ status: true, code: '0000', subject });
 });
 
 const deleteSubject = catchAsync(async (req, res) => {
     await subjectService.deleteSubjectById(req.params.subjectId);
-    res.status(httpStatus.NO_CONTENT).send({ message: 'Subject successfully deleted'});
+    res.send({ status: true, code: '0000', message: 'Subject successfully deleted'});
 })
 
 module.exports = {

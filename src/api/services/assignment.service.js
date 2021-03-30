@@ -13,7 +13,7 @@ const queryAssignments = async (filter, options) => {
 };
 
 const getAssignmentById = async (id) => {
-    return Assignment.findById(id);
+    return Assignment.findById(id).populate(['classroom','subject','quiz']);
 };
 
 const updateAssignmentById = async (assignmentId, updateBody) => {
