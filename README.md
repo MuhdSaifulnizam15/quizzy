@@ -153,3 +153,11 @@ List of available routes:
 `GET /v1/states/:stateId` - get state\
 `PATCH /v1/states/:stateId` - update state\
 `DELETE /v1/states/:stateId` - delete state
+
+**City routes**:\
+`POST /v1/city` - create a city\
+`GET /v1/city` - get all city\
+`GET /v1/city/state/:stateId` - get city by state\
+`GET /v1/city/:cityId` - get city\
+`PATCH /v1/city/:cityId` - update city\
+`DELETE /v1/city/:cityId` - delete city
