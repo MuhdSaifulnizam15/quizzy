@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { questionTypes } = require('../../config/constants');
 
 const questionSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -14,17 +15,37 @@ const questionSchema = mongoose.Schema({
         default: false
     },
     type: {
-        type: Number,
-        required: true
+        type: String,
+        enum: questionTypes,
+        default: 'mcq'
     },
-    quiz_id: {
-        type: Number,
+    quiz: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Quiz',
         required: true
     },
     duration: {
         type: Number,
+        default: 10
+    },
+    option: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Option',
+            required: true
+        }
+    ],
+    answer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Option',
         required: true
+    },
+    pass_min_score: {
+        type: Number,
+        default: 1
     }
+}, {
+    timestamps: true,
 });
 
 module.exports = mongoose.model('Question', questionSchema);

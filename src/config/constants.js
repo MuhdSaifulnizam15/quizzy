@@ -10,7 +10,20 @@ const priority = {
   high: 'HIGH',
 };
 
+const questionTypes = {
+  mcq: 'MCQ',
+  fillInTheBlank: 'Fill in the blank',
+  trueFalse: 'True or False',
+};
+
+const grade = {
+  'pass': 'PASS',
+  'fail': 'FAIL',
+};
+
 module.exports = {
   programmeTypes,
   priority,
+  questionTypes,
+  grade
 };
