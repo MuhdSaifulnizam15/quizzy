@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { questionTypes } = require('../../config/constants');
+const { toJSON, paginate } = require('./plugins');
 
 const questionSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -47,5 +48,8 @@ const questionSchema = mongoose.Schema({
 }, {
     timestamps: true,
 });
+
+questionSchema.plugin(toJSON);
+questionSchema.plugin(paginate);
 
 module.exports = mongoose.model('Question', questionSchema);
