@@ -8,4 +8,5 @@ module.exports = {
     motivationQuoteValidation: require('./motivation_quote.validation'),
     stateValidation: require('./state.validation'),
     cityValidation: require('./city.validation'),
+    questionValidation: require('./question.validation'),
 };

@@ -8,4 +8,5 @@ module.exports = {
     motivationQuoteController: require('./motivation_quote.controller'),
     stateController: require('./state.controller'),
     cityController: require('./city.controller'),
+    questionController: require('./question.controller'),
 };

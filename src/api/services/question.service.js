@@ -13,7 +13,7 @@ const queryQuestions = async (filter, options) => {
 };
 
 const getQuestionById = async (id) => {
-    return Question.findById(id).populated(['quiz, option', 'answer']);
+    return Question.findById(id).populate(['quiz, option']);
 }
 
 const updateQuestionById = async (questionId, updateBody) => {
@@ -27,7 +27,7 @@ const updateQuestionById = async (questionId, updateBody) => {
 };
 
 const deleteQuestionById = async (questionId) => {
-    const question = await getAssignmentById(questionId);
+    const question = await getQuestionById(questionId);
     if(!question){
         throw new ApiError(httpStatus.NOT_FOUND, 'Question not found');
     }

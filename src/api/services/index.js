@@ -10,5 +10,5 @@ module.exports = {
     motivationQuoteService: require('./motivation_quote.service'),
     stateService: require('./state.service'),
     cityService: require('./city.service'),
-    questionservice: require('./question.service'),
+    questionService: require('./question.service'),
 };

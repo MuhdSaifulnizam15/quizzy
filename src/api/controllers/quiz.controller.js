@@ -19,6 +19,8 @@ const getQuizzes = catchAsync(async (req, res) => {
 
 const getQuiz = catchAsync(async (req, res) => {
     const filter = { _id: req.params.quizId };
+    const options = {};
+    options.populate = 'subject';
     const result = await quizService.queryQuizzes(filter, options);
     if(result.results.length === 0){
         throw new ApiError(httpStatus.NOT_FOUND, 'Quiz not found');

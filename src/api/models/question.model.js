@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const { questionTypes } = require('../../config/constants');
 const { toJSON, paginate } = require('./plugins');
+const { optionSchema } = require('./option.model')
 
 const questionSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     title: {
         type: String,
         required: true
@@ -29,17 +29,11 @@ const questionSchema = mongoose.Schema({
         type: Number,
         default: 10
     },
-    option: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Option',
-            required: true
-        }
-    ],
+    option: {
+        type: [optionSchema]
+    },
     answer: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Option',
-        required: true
+        type: String,
     },
     pass_min_score: {
         type: Number,
