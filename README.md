@@ -161,3 +161,10 @@ List of available routes:
 `GET /v1/city/:cityId` - get city\
 `PATCH /v1/city/:cityId` - update city\
 `DELETE /v1/city/:cityId` - delete city
+
+**Question routes**:\
+`POST /v1/questions` - create a question\
+`GET /v1/questions` - get all questions\
+`GET /v1/questions/:questionId` - get question\
+`PATCH /v1/questions/:questionId` - update question\
+`DELETE /v1/questions/:questionId` - delete question
