@@ -16,6 +16,15 @@ const getQuestionById = async (id) => {
     return Question.findById(id).populate(['quiz, option']);
 }
 
+const getQuestionByQuiz = async (id) => {
+    return Question.find({ quiz: id }).populate(['quiz, option']);
+}
+
+const getQuestionByType = async (type, filter, options) => {
+    const questions = Question.find({ type: type }).populate(['quiz, option']);
+    return questions.paginate(filter, options);
+}
+
 const updateQuestionById = async (questionId, updateBody) => {
     const question = await getQuestionById(questionId);
     if(!question){
@@ -39,6 +48,8 @@ module.exports = {
     createQuestion,
     queryQuestions,
     getQuestionById,
+    getQuestionByQuiz,
+    getQuestionByType,
     updateQuestionById,
     deleteQuestionById,
 };

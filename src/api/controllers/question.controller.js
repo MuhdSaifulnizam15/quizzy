@@ -25,6 +25,24 @@ const getQuestion = catchAsync(async (req, res) => {
     res.send({ status: true, code: '0000', question });
 });
 
+const getQuestionByQuiz = catchAsync(async (req, res) => {
+    const question = await questionService.getQuestionByQuiz(req.params.quizId);
+    if(!question){
+        throw new ApiError(httpStatus.NOT_FOUND, 'No question found');
+    }
+    res.send({ status: true, code: '0000', question });
+});
+
+const getQuestionByType = catchAsync(async (req, res) => {
+    const filter = pick(req.query, ['title', 'dateline', 'priority', 'subject', 'quiz', 'classroom']);
+    const options = pick(req.query, ['sortBy', 'limit', 'page']);
+    const question = await questionService.getQuestionByType((req.params.type).toUpperCase(), filter, options);
+    // if(!question){
+    //     throw new ApiError(httpStatus.NOT_FOUND, 'No question found');
+    // }
+    res.send({ status: true, code: '0000', question });
+});
+
 const updateQuestion = catchAsync(async (req, res) => {
     const question = await questionService.updateQuestionById(req.params.questionId, req.body);
     res.send({ status: true, code: '0000', question });
@@ -39,6 +57,8 @@ module.exports = {
     createQuestion,
     getQuestion,
     getQuestions,
+    getQuestionByQuiz,
+    getQuestionByType,
     updateQuestion,
     deleteQuestion,
 };
