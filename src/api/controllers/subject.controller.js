@@ -10,9 +10,8 @@ const createSubject = catchAsync(async (req, res) => {
 });
 
 const getSubjects = catchAsync(async (req, res) => {
-    const filter = pick(req.query, ['name', 'code']);
-    const options = pick(req.query, ['sortBy', 'limit', 'page']);
-    const result = await subjectService.querySubjects( filter, options);
+    const options = pick(req.query, ['sort', 'limit', 'page']);
+    const result = await subjectService.querySubjects(options);
     res.send({ status: true, code: '0000', result });
 });
 

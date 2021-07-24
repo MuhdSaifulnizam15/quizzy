@@ -10,20 +10,17 @@ const createMotivationQuote = catchAsync(async (req, res) => {
 });
 
 const getMotivationQuotes = catchAsync(async (req, res) => {
-    const filter = pick(req.query, ['quote', 'author']);
-    const options = pick(req.query, ['sortBy', 'limit', 'page']);
-    const result = await motivationQuoteService.queryMotivationQuotes(filter, options);
-    res.send(result);
+    const options = pick(req.query, ['sort', 'limit', 'page']);
+    const result = await motivationQuoteService.queryMotivationQuotes(options);
+    res.send({ status: true, code: '0000', result });
 });
 
 const getMotivationQuote = catchAsync(async (req, res) => {
-    const filter = { _id: req.params.motivationQuoteId };
-    const options = { };
-    const result = await motivationQuoteService.queryMotivationQuotes(filter, options);
-    if(result.results.length === 0){
+    const motivationQuote = await motivationQuoteService.getMotivationQuoteById(req.params.motivationQuoteId);
+    if(!motivationQuote){
         throw new ApiError(httpStatus.NOT_FOUND, 'Motivation Quote not found');
     }
-    res.send(result);
+    res.send({ status: true, code: '0000', motivationQuote });
 });
 
 const updateMotivationQuote = catchAsync(async (req, res) => {

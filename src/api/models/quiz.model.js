@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const { toJSON, paginate } = require('./plugins');
+const mongoosePaginate = require('mongoose-paginate-v2');
+const { toJSON } = require('./plugins');
 
 const quizSchema = mongoose.Schema({
     name: {
@@ -23,6 +24,6 @@ const quizSchema = mongoose.Schema({
 });
 
 quizSchema.plugin(toJSON);
-quizSchema.plugin(paginate);
+quizSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Quiz', quizSchema);

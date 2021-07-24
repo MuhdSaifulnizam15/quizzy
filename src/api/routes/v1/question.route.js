@@ -10,7 +10,7 @@ router.post('/', auth('manageQuestion'), validate(questionValidation.createQuest
 router.get('/', auth('getQuestions'), validate(questionValidation.getQuestions), questionController.getQuestions);
 router.get('/:questionId', auth('getQuestion'), validate(questionValidation.getQuestion), questionController.getQuestion);
 router.get('/quiz/:quizId', auth('getQuestion'), validate(questionValidation.getQuestion), questionController.getQuestionByQuiz);
-router.get('/type/:type', auth('getQuestion'), validate(questionValidation.getQuestion), questionController.getQuestionByType);
+router.get('/type/:type', auth('getQuestion'), validate(questionValidation.getQuestionType), questionController.getQuestionByType);
 router.post('/update/:questionId', auth('manageQuestion'), validate(questionValidation.updateQuestion), questionController.updateQuestion);
 router.post('/delete/:questionId', auth('manageQuestion'), validate(questionValidation.deleteQuestion), questionController.deleteQuestion);
 

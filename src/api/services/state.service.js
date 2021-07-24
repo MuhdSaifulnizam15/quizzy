@@ -13,8 +13,9 @@ const createState = async (userBody) => {
     return state;
 };
 
-const getAllState = async () => {
-    const states = await State.find({});
+const getAllState = async (options) => {
+    console.log(options);
+    const states = await State.paginate({}, options);
     return states;
 };
 

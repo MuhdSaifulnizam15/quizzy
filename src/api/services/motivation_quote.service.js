@@ -10,8 +10,8 @@ const createMotivationQuote = async (userBody) => {
     return motivationQuote;
 };
 
-const queryMotivationQuotes = async (filter, options) => {
-    const motivationQuotes = await MotivationQuote.paginate(filter, options);
+const queryMotivationQuotes = async (options) => {
+    const motivationQuotes = await MotivationQuote.paginate({}, options);
     return motivationQuotes;
 };
 

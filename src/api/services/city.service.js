@@ -15,13 +15,15 @@ const createCity = async (userBody) => {
     return city;
 };
 
-const getAllCity = async () => {
-    const citys = await City.find({}).populate(['state_id']);
+const getAllCity = async (options) => {
+    options.populate = ['state_id'];
+    const citys = await City.paginate({}, options);
     return citys;
 };
 
-const getCityByStateId = async (stateId) => {
-    const city = await City.find({ state_id: stateId }).populate(['state_id']);
+const getCityByStateId = async (stateId, options) => {
+    options.populate = ['state_id'];
+    const city = await City.paginate({ state_id: stateId }, options);
     return city;
 };
 

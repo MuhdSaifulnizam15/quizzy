@@ -7,8 +7,9 @@ const createQuiz = async (userBody) => {
     return quiz;
 };
 
-const queryQuizzes = async (filter, options) => {
-    const quizs = await Quiz.paginate(filter, options);
+const queryQuizzes = async (options) => {
+    options.populate = ['subject'];
+    const quizs = await Quiz.paginate({}, options);
     return quizs;
 };
 

@@ -10,22 +10,17 @@ const createQuiz = catchAsync(async (req, res) => {
 });
 
 const getQuizzes = catchAsync(async (req, res) => {
-    const filter = pick(req.query, ['name', 'is_active', 'subject']);
-    const options = pick(req.query, ['sortBy', 'limit', 'page']);
-    options.populate = 'subject';
-    const result = await quizService.queryQuizzes(filter, options);
+    const options = pick(req.query, ['sort', 'limit', 'page']);
+    const result = await quizService.queryQuizzes(options);
     res.send({ status: true, code: '0000', result });
 });
 
 const getQuiz = catchAsync(async (req, res) => {
-    const filter = { _id: req.params.quizId };
-    const options = {};
-    options.populate = 'subject';
-    const result = await quizService.queryQuizzes(filter, options);
-    if(result.results.length === 0){
+    const quiz = await quizService.getQuizById(req.params.quizId);
+    if(!quiz){
         throw new ApiError(httpStatus.NOT_FOUND, 'Quiz not found');
     }
-    res.send({ status: true, code: '0000', result });
+    res.send({ status: true, code: '0000', quiz });
 });
 
 const updateQuiz = catchAsync(async (req, res) => {

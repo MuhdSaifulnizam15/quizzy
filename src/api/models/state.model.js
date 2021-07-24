@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 const { toJSON } = require('./plugins');
 
 const stateSchema = mongoose.Schema({
@@ -16,6 +17,7 @@ const stateSchema = mongoose.Schema({
 });
 
 stateSchema.plugin(toJSON);
+stateSchema.plugin(mongoosePaginate);
 
 stateSchema.statics.isNameTaken = async function (name, excludeStateId) {
     const state = await this.findOne({ name, _id: { $ne: excludeStateId } });

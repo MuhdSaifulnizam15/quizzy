@@ -10,8 +10,9 @@ const createClassroom = async (userBody) => {
     return classroom;
 };
 
-const queryClassrooms = async (filter, options) => {
-    const classrooms = await Classroom.paginate(filter, options);
+const queryClassrooms = async (options) => {
+    options.populate = ['subject', 'tutor'];
+    const classrooms = await Classroom.paginate({}, options);
     return classrooms;
 };
 

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const { toJSON, paginate } = require('./plugins');
+const mongoosePaginate = require('mongoose-paginate-v2');
+const { toJSON } = require('./plugins');
 
 const motivationQuoteSchema = mongoose.Schema({
     quote: {
@@ -15,7 +16,7 @@ const motivationQuoteSchema = mongoose.Schema({
 });
 
 motivationQuoteSchema.plugin(toJSON);
-motivationQuoteSchema.plugin(paginate);
+motivationQuoteSchema.plugin(mongoosePaginate);
 
 motivationQuoteSchema.statics.isQuoteTaken = async function (quote, excludeMotivationQuoteId) {
     const motivationQuote = await this.findOne({ quote, _id: { $ne: excludeMotivationQuoteId } });

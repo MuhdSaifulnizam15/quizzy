@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const { toJSON, paginate } = require('./plugins');
+const mongoosePaginate = require('mongoose-paginate-v2');
+const { toJSON } = require('./plugins');
 
 const subjectSchema = mongoose.Schema({
     name: {
@@ -17,7 +18,7 @@ const subjectSchema = mongoose.Schema({
 });
 
 subjectSchema.plugin(toJSON);
-subjectSchema.plugin(paginate);
+subjectSchema.plugin(mongoosePaginate);
 
 subjectSchema.statics.isCodeTaken = async function (code, excludeSubjectId) {
     const subject = await this.findOne({ code, _id: { $ne: excludeSubjectId } });

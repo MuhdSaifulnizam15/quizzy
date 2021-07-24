@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 const { programmeTypes } = require('../../config/constants');
-const { toJSON, paginate } = require('./plugins');
+const { toJSON } = require('./plugins');
 
 const classroomSchema = mongoose.Schema({
     subject: {
@@ -36,7 +37,7 @@ const classroomSchema = mongoose.Schema({
 });
 
 classroomSchema.plugin(toJSON);
-classroomSchema.plugin(paginate);
+classroomSchema.plugin(mongoosePaginate);
 
 classroomSchema.statics.isNameTaken = async function (name, excludeClasroomId) {
     const classroom = await this.findOne({ name, _id: { $ne: excludeClasroomId } });

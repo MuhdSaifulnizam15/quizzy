@@ -10,10 +10,8 @@ const createAssignment = catchAsync(async (req, res) => {
 });
 
 const getAssignments = catchAsync(async (req, res) => {
-    const filter = pick(req.query, ['title', 'dateline', 'priority', 'subject', 'quiz', 'classroom']);
-    const options = pick(req.query, ['sortBy', 'limit', 'page']);
-    options.populate = 'subject,quiz,classroom';
-    const result = await assignmentService.queryAssignments(filter, options);
+    const options = pick(req.query, ['sort', 'limit', 'page']);
+    const result = await assignmentService.queryAssignments(options);
     res.send({ status: true, code: '0000', result });
 });
 

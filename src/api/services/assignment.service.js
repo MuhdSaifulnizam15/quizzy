@@ -7,8 +7,9 @@ const createAssignment = async (userBody) => {
     return assignment;
 };
 
-const queryAssignments = async (filter, options) => {
-    const assignments = await Assignment.paginate(filter, options);
+const queryAssignments = async (options) => {
+    options.populate = ['subject', 'quiz', 'classroom']
+    const assignments = await Assignment.paginate({}, options);
     return assignments;
 };
 

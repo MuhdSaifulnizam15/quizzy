@@ -10,8 +10,8 @@ const createSubject = async (userBody) => {
     return subject;
 };
 
-const querySubjects = async (filter, options) => {
-    const subjects = await Subject.paginate(filter, options);
+const querySubjects = async (options) => {
+    const subjects = await Subject.paginate({}, options);
     return subjects;
 };
 

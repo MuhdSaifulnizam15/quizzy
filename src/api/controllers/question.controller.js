@@ -3,6 +3,7 @@ const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { questionService } = require('../services');
+const { questionTypes } = require('../../config/constants');
 
 const createQuestion = catchAsync(async (req, res) => {
     const question = await questionService.createQuestion(req.body);
@@ -10,10 +11,8 @@ const createQuestion = catchAsync(async (req, res) => {
 });
 
 const getQuestions = catchAsync(async (req, res) => {
-    const filter = pick(req.query, ['title', 'dateline', 'priority', 'subject', 'quiz', 'classroom']);
-    const options = pick(req.query, ['sortBy', 'limit', 'page']);
-    options.populate = 'quiz,option';
-    const result = await questionService.queryQuestions(filter, options);
+    const options = pick(req.query, ['sort', 'limit', 'page']);
+    const result = await questionService.queryQuestions(options);
     res.send({ status: true, code: '0000', result });
 });
 
@@ -34,12 +33,15 @@ const getQuestionByQuiz = catchAsync(async (req, res) => {
 });
 
 const getQuestionByType = catchAsync(async (req, res) => {
-    const filter = pick(req.query, ['title', 'dateline', 'priority', 'subject', 'quiz', 'classroom']);
-    const options = pick(req.query, ['sortBy', 'limit', 'page']);
-    const question = await questionService.getQuestionByType((req.params.type).toUpperCase(), filter, options);
-    // if(!question){
-    //     throw new ApiError(httpStatus.NOT_FOUND, 'No question found');
-    // }
+    const options = pick(req.query, ['sort', 'limit', 'page']);
+    if(!questionTypes[req.params.type]){
+        throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid question type, allowed question type: [mcq,fillInTheBlank,trueFalse]');
+    }
+    const type = questionTypes[req.params.type];
+    const question = await questionService.getQuestionByType(type, options);
+    if(!question){
+        throw new ApiError(httpStatus.NOT_FOUND, 'No question found');
+    }
     res.send({ status: true, code: '0000', question });
 });
 

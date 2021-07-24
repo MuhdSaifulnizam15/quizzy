@@ -1,4 +1,5 @@
 const httpStatus = require('http-status');
+const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { stateService } = require('../services');
@@ -9,7 +10,8 @@ const createState = catchAsync(async (req, res) => {
 });
 
 const getStates = catchAsync(async (req, res) => {
-    const result = await stateService.getAllState();
+    const options = pick(req.query, ['sort', 'limit', 'page']);
+    const result = await stateService.getAllState(options);
     res.send({ status: true, code: '0000', result });
 });
 

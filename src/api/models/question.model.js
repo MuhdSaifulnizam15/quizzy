@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const { questionTypes } = require('../../config/constants');
-const { toJSON, paginate } = require('./plugins');
-const { optionSchema } = require('./option.model')
+const { toJSON } = require('./plugins');
+const { optionSchema } = require('./option.model');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const questionSchema = mongoose.Schema({
     title: {
@@ -44,6 +45,6 @@ const questionSchema = mongoose.Schema({
 });
 
 questionSchema.plugin(toJSON);
-questionSchema.plugin(paginate);
+questionSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Question', questionSchema);

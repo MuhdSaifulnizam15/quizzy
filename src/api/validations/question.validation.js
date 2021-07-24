@@ -19,6 +19,12 @@ const createQuestion = {
     }),
 };
 
+const getQuestionType = {
+    params: Joi.object().keys({
+        type: Joi.string().required(),
+    })
+}
+
 const updateQuestion = {
     params: Joi.object().keys({
         questionId: Joi.string().required(),
@@ -35,4 +41,5 @@ module.exports = {
     createQuestion,
     updateQuestion,
     deleteQuestion,
+    getQuestionType,
 };

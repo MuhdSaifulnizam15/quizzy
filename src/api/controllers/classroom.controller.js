@@ -10,20 +10,17 @@ const createClassroom = catchAsync(async (req, res) => {
 });
 
 const getClassrooms = catchAsync(async (req, res) => {
-    const filter = pick(req.query, ['name', 'programme_module', 'batch', 'is_active']);
-    const options = pick(req.query, ['sortBy', 'limit', 'page']);
-    options.populate = 'subject,tutor'; 
-    const result = await classroomService.queryClassrooms(filter, options);
+    const options = pick(req.query, ['sort', 'limit', 'page']);
+    const result = await classroomService.queryClassrooms(options);
     res.send({ status: true, code: '0000', result });
 });
 
 const getClassroom = catchAsync(async (req, res) => {
-    const filter = { _id: req.params.classroomId };
-    const result = await classroomService.queryClassrooms(filter, options);
-    if(result.results.length === 0){
+    const classroom = await classroomService.getClassroomById(req.params.classroomId);
+    if(!classroom){
         throw new ApiError(httpStatus.NOT_FOUND, 'Classroom not found');
     }
-    res.send({ status: true, code: '0000', result });
+    res.send({ status: true, code: '0000', classroom });
 });
 
 const updateClassroom = catchAsync(async (req, res) => {

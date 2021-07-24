@@ -7,8 +7,9 @@ const createQuestion = async (userBody) => {
     return question;
 };
 
-const queryQuestions = async (filter, options) => {
-    const questions = await Question.paginate(filter, options);
+const queryQuestions = async (options) => {
+    options.populate = ['quiz','option'];
+    const questions = await Question.paginate({}, options);
     return questions;
 };
 
@@ -20,9 +21,10 @@ const getQuestionByQuiz = async (id) => {
     return Question.find({ quiz: id }).populate(['quiz, option']);
 }
 
-const getQuestionByType = async (type, filter, options) => {
-    const questions = Question.find({ type: type }).populate(['quiz, option']);
-    return questions.paginate(filter, options);
+const getQuestionByType = async (type, options) => {
+    options.populate = ['quiz','option'];
+    const questions = await Question.paginate({type: type}, options);
+    return questions;
 }
 
 const updateQuestionById = async (questionId, updateBody) => {

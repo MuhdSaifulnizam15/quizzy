@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 const { priority } = require('../../config/constants');
-const { toJSON, paginate } = require('./plugins');
+const { toJSON } = require('./plugins');
 
 const assignmentSchema = mongoose.Schema({
     title: {
@@ -34,6 +35,6 @@ const assignmentSchema = mongoose.Schema({
 });
 
 assignmentSchema.plugin(toJSON);
-assignmentSchema.plugin(paginate);
+assignmentSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Assignment', assignmentSchema);
