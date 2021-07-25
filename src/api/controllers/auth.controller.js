@@ -43,6 +43,12 @@ const verifyEmail = catchAsync(async (req, res) => {
     res.send({ status: true, code: '0000', message: 'Account verified. Please try to login using this email'});
 });
 
+const getUserProfile = catchAsync(async (req,res) => {
+    const accessToken = req.headers['authorization'].split(' ');
+    const user = await authService.getUserProfile(accessToken[1]);
+    res.send({ status: true, code: '0000', user });
+})
+
 module.exports = {
     register,
     login,
@@ -51,4 +57,5 @@ module.exports = {
     forgotPassword,
     resetPassword,
     verifyEmail,
+    getUserProfile,
 };

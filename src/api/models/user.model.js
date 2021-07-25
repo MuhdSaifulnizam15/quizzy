@@ -2,8 +2,10 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const mongoosePaginate = require('mongoose-paginate-v2');
+const jwt = require('jsonwebtoken');
 const { toJSON } = require('./plugins');
 const { roles } = require('../../config/roles');
+const config = require('../../config/config');
  
 const userSchema = mongoose.Schema({
     email: {
@@ -87,6 +89,12 @@ userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
     const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
     return !!user;
 };
+
+userSchema.statics.findByToken = async function (token) {
+    const user = this;
+    const payload = jwt.verify(token, config.jwt.secret);
+    return await user.findOne({ _id: payload.sub, });
+}   
 
 /**
  * Check if password matches the user's password

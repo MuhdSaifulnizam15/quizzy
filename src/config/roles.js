@@ -11,7 +11,8 @@ const getPermissionList = [
   'getMotivationQuote', 'getMotivationQuotes', 
   'getState', 'getStates',
   'getCity', 'getCitys', 'getCityByState',
-  'getQuestion', 'getQuestions'
+  'getQuestion', 'getQuestions',
+  'getDashboard', 'getUserProfile',
 ];
 const studentPermissionList = [];
 const tutorManagePermissionList = ['manageSubjects', 'manageClassroom', 'manageAssignment', 'manageQuiz', 'manageMotivationQuote', 'manageQuestion'];
