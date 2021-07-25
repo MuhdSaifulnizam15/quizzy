@@ -25,7 +25,8 @@ const getQuestion = catchAsync(async (req, res) => {
 });
 
 const getQuestionByQuiz = catchAsync(async (req, res) => {
-    const question = await questionService.getQuestionByQuiz(req.params.quizId);
+    const options = pick(req.query, ['sort', 'limit', 'page']);
+    const question = await questionService.getQuestionByQuiz(req.params.quizId, options);
     if(!question){
         throw new ApiError(httpStatus.NOT_FOUND, 'No question found');
     }

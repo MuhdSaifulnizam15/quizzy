@@ -17,8 +17,10 @@ const getQuestionById = async (id) => {
     return Question.findById(id).populate(['quiz, option']);
 }
 
-const getQuestionByQuiz = async (id) => {
-    return Question.find({ quiz: id }).populate(['quiz, option']);
+const getQuestionByQuiz = async (id, options) => {
+    options.populate = ['quiz','option'];
+    const questions = await Question.paginate({quiz: id}, options);
+    return questions;
 }
 
 const getQuestionByType = async (type, options) => {
