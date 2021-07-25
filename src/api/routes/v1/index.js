@@ -9,6 +9,7 @@ const motivationQuoteRoutes = require('./motivation_quote.route');
 const stateRoutes = require('./state.route');
 const cityRoutes = require('./city.route');
 const questionRoutes = require('./question.route');
+const dashboardRoutes = require('./dashboard.route');
 
 const router = express.Router();
 
@@ -58,6 +59,10 @@ const defaultRoutes = [
     {
       path: '/questions',
       route: questionRoutes,
+    },
+    {
+      path: '/dashboard',
+      route: dashboardRoutes,
     },
 ];
 

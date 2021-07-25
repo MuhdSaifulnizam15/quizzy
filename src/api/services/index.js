@@ -11,4 +11,5 @@ module.exports = {
     stateService: require('./state.service'),
     cityService: require('./city.service'),
     questionService: require('./question.service'),
+    dashboardService: require('./dashboard.service'),
 };
