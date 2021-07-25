@@ -10,7 +10,7 @@ const createUser = catchAsync(async (req, res) => {
 });
 
 const getUsers = catchAsync(async (req, res) => {
-    const options = pick(req.query, ['sort', 'limit', 'page']);
+    const options = pick(req.query, ['sort', 'limit', 'page', 'role']);
     const result = await userService.queryUsers(options);
     res.send({ status: true, code: '0000', result });
 });
