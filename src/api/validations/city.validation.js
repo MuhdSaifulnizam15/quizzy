@@ -3,7 +3,7 @@ const Joi = require('joi');
 
 const createCity = {
     body: Joi.object().keys({
-        state_id: Joi.number().required(),
+        state: Joi.string().required(),
         name: Joi.string().required(),
     }),
 };

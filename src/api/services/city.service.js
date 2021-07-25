@@ -16,7 +16,7 @@ const createCity = async (userBody) => {
 };
 
 const getAllCity = async (options) => {
-    options.populate = ['state_id'];
+    options.populate = ['state'];
     const citys = await City.paginate({}, options);
     return citys;
 };

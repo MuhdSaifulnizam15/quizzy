@@ -12,4 +12,5 @@ module.exports = {
     cityService: require('./city.service'),
     questionService: require('./question.service'),
     dashboardService: require('./dashboard.service'),
+    branchService: require('./branch.service'),
 };

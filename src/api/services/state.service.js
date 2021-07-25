@@ -6,9 +6,6 @@ const createState = async (userBody) => {
     if(await State.isNameTaken(userBody.name)) {
         throw new ApiError(httpStatus.BAD_REQUEST, 'state already exist.');
     }
-    if(await State.isIdTaken(userBody.state_id)) {
-        throw new ApiError(httpStatus.BAD_REQUEST, 'state id already exist.');
-    }
     const state = await State.create(userBody);
     return state;
 };
