@@ -166,5 +166,7 @@ List of available routes:
 `POST /v1/questions` - create a question\
 `GET /v1/questions` - get all questions\
 `GET /v1/questions/:questionId` - get question\
+`GET /v1/questions/quiz/:quizId` - get question by quiz id\
+`GET /v1/questions/type/:quizType [mcq|fillInTheBlank|trueFalse]` - get question based on question type\
 `PATCH /v1/questions/:questionId` - update question\
 `DELETE /v1/questions/:questionId` - delete question
