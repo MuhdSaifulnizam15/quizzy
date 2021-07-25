@@ -34,9 +34,14 @@ const logout = async (refreshToken) => {
         blacklisted: false
     });
     if(!refreshTokenDoc){
-        throw new ApiError(httpStatus.NOT_FOUND, 'Not found');
+        throw new ApiError(httpStatus.NOT_FOUND, 'Refresh token not found');
     }
-    await refreshTokenDoc.remove();
+    const deletedRefreshTokenDoc = await Token.deleteOne({
+        token: refreshToken,
+        type: tokenTypes.REFRESH,
+        blacklisted: false
+    });
+    console.log(deletedRefreshTokenDoc);
 };
 
 /**
