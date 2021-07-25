@@ -10,4 +10,5 @@ module.exports = {
     cityController: require('./city.controller'),
     questionController: require('./question.controller'),
     dashboardController: require('./dashboard.controller'),
+    branchController: require('./branch.controller'),
 };

@@ -10,6 +10,7 @@ const stateRoutes = require('./state.route');
 const cityRoutes = require('./city.route');
 const questionRoutes = require('./question.route');
 const dashboardRoutes = require('./dashboard.route');
+const branchRoutes = require('./branch.route');
 
 const router = express.Router();
 
@@ -63,6 +64,10 @@ const defaultRoutes = [
     {
       path: '/dashboard',
       route: dashboardRoutes,
+    },
+    {
+      path: '/branch',
+      route: branchRoutes,
     },
 ];
 

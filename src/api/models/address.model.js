@@ -1,38 +1,25 @@
 const mongoose = require('mongoose');
+const { toJSON } = require('./plugins');
 
 const addressSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     address: {
         type: String,
         required: true
     },
-    cityId: {
-        type: Number,
+    city: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'City',
         required: true
     },
-    cityName: {
+    postcode: {
         type: String,
         required: true
     },
-    districtId: {
-        type: Number,
-        required: true
-    },
-    districtName: {
-        type: String,
-        required: true
-    },
-    postCode: {
-        type: Number,
-        required: true
-    },
-    mobile_no: {
-        type: Number
-    },
-    default_address: {
-        type: Boolean,
-        default: true
+    office_no: {
+        type: String
     }
 });
+
+addressSchema.plugin(toJSON);
 
 module.exports = mongoose.model('Address', addressSchema);
