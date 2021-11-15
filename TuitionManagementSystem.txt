@@ -1,0 +1,223 @@
+// Address
+{
+    "address": String,
+    "city": ObjectId,
+    "postcode": String,
+    "Office_no": String,
+}
+
+// Answer
+{
+    "question": ObjectId,
+    "answer" ObjectId,
+    "student": ObjectId,
+    "answer_time": Number,
+}
+
+// Assignment
+{
+    "title": String,
+    "dateline": Date,
+    "priority": String,
+    "subject": ObjectId,
+    "quiz": ObjectId,
+    "classroom": ObjectId,
+}
+
+// Branch
+{
+    "name": String,
+    "address": ObjectId,
+
+    // TO BE ADDED
+    "tag_line": String,
+    "email": String,
+    "phone_number": String,
+    "web_url": String,
+    "manager_info": ObjectId
+}
+
+// City 
+{
+    "state": ObjecctId,
+    "name": String,
+}
+
+// Classroom 
+{
+    "subject": ObjectId,
+    "tutor": ObjectId,
+    "name": String,
+    "programme_module": String,
+    "is_active": Boolean,
+    "batch": String,
+}
+
+// Mark
+{
+    "quiz": ObjectId,
+    "student": ObjectId,
+    "mark": Number,
+    "grade": String,
+    "comment": String,
+}
+
+// Motivation Quote
+{
+    "quote": String,
+    "author": String,
+}
+
+// Option
+{
+    "title": String,
+    "description": String,
+    "is_correct": Boolean,
+}
+
+// Question 
+{
+    "title": String,
+    "description": String,
+    "is_true": Boolean,
+    "type": String,
+    "quiz": ObjectId,
+    "duration": Number,
+    "option": [ObjectId],
+    "answer": String,
+    "pass_min_score": Number,
+}
+
+// Quiz 
+{
+    "name": String,
+    "desccription": String,
+    "is_active": Boolean,
+    "subject": ObjectId,
+}
+
+// State 
+{
+    "name": String,
+}
+
+// Subject 
+{
+    "name": String,
+    "code': String,
+}
+
+// Token
+{
+    "token": String,
+    "user": ObjectId,
+    "type": String,
+    "expires": String,
+    "blacklisted": Boolean,
+}
+
+// User
+{
+    "email": String,
+    "password": String,
+    "first_name": String,
+    "last_name": String,
+    "role": String,
+    "active": Boolean,
+    "image": String,
+
+    // TO BE ADDED
+    "personal_info": {
+        "gender": String,
+        "nric": String,
+        "age": Number,
+        "race": String,
+        "religion": String,
+        "job": String,
+        "phone_number": String,
+        "personal_email": String,
+        "address": ObjectId,
+    },
+    "parent_info": {
+        "name": String,
+        "nric": String,
+        "job": String,
+        "personal_email": String,
+        "address": ObjectId,
+        "phone_number": String,
+        "home_number": String,
+    },
+    "school_info': {
+        "school_name": String,
+        "class_name": String,
+        "year": String,
+        "hobby": String,
+        "ambition": String,
+        "target': String,
+        "focus_problem': String,
+    }
+}
+
+
+==============================================
+
+// Package (DONE)
+{
+    "name": String,
+    "amount": String,
+    "subject": [ObjectId],
+    "is_active": Boolean,
+    "level": String,
+    "description": String,
+}
+
+// Payment (DONE)
+{
+    "title": String,
+    "amount": Number,
+    "status': String,
+    "description": String,
+    "payer": String,
+    "student_name": [ObjectId],
+    "received_by': ObjectId,
+    "date_received": Date,
+    "attachment": String,
+    "payment_method': String,
+    "receipt_no": String,
+    "date_created': Date
+}
+
+// Exam
+{
+    "name": String,
+    "type": String,
+    "description": String,
+    "start_date': Date,
+    "end_date": Date,
+    "start_time": String,
+    "end_time": String,
+    "duration": String,
+    "subject": ObjectId,
+    "examined_by": ObjectId,
+    "total_mark": Number,
+    "passing_mark": Number,
+}
+
+// Exam Result
+{
+    "exam": ObjectId,
+    "total_mark": Number,
+    "mark": Number,
+    "status': String,
+    "grade": String,
+    "student": ObjectId,
+}
+
+// Attendance
+{
+    "datetime": Date,
+    "status": String,
+    "remarks": String,
+    "classroom": ObjectId,
+    "student": ObjectId,
+}
