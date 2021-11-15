@@ -15,4 +15,5 @@ module.exports = {
     Mark: require('./mark.model'),
     Branch: require('./branch.model'),
     Package: require('./package.model'),
+    Payment: require('./payment.model'),
 };

@@ -41,7 +41,6 @@ const logout = async (refreshToken) => {
         type: tokenTypes.REFRESH,
         blacklisted: false
     });
-    console.log(deletedRefreshTokenDoc);
 };
 
 /**

@@ -11,4 +11,5 @@ module.exports = {
     questionValidation: require('./question.validation'),
     branchValidation: require('./branch.validation'),
     packageValidation: require('./package.validation'),
+    paymentValidation: require('./payment.validation'),
 };

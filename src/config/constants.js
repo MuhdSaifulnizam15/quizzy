@@ -21,9 +21,25 @@ const grade = {
   'fail': 'FAIL',
 };
 
+
+const paymentStatus = {
+  'success': 'SUCCESS',
+  'pending': 'PENDING',
+}
+
+const paymentMethod = {
+  'onlineTransfer': 'ONLINE TRANSFER',
+  'cash': 'CASH',
+  'cheque': 'CHEQUE',
+  'debitCard': 'DEBIT CARD',
+  'creditCard': 'CREDIT CARD',
+}
+
 module.exports = {
   programmeTypes,
   priority,
   questionTypes,
-  grade
+  grade,
+  paymentStatus,
+  paymentMethod,
 };

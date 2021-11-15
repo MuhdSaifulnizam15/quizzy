@@ -8,9 +8,7 @@ const createPackage = async (userBody) => {
 };
 
 const queryPackages = async (options) => {
-    console.log(options)
     options.populate = ['subject'];
-    console.log(options);
     const packages = await Package.paginate({}, options);
     return packages;
 };

@@ -12,4 +12,5 @@ module.exports = {
     dashboardController: require('./dashboard.controller'),
     branchController: require('./branch.controller'),
     packageController: require('./package.controller'),
+    paymentController: require('./payment.controller'),
 };

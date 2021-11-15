@@ -12,6 +12,7 @@ const questionRoutes = require('./question.route');
 const dashboardRoutes = require('./dashboard.route');
 const branchRoutes = require('./branch.route');
 const packageRoutes = require('./package.route');
+const paymentRoutes = require('./payment.route');
 
 const router = express.Router();
 
@@ -73,6 +74,10 @@ const defaultRoutes = [
     {
       path: '/package',
       route: packageRoutes,
+    },
+    {
+      path: '/payment',
+      route: paymentRoutes,
     },
 ];
 
