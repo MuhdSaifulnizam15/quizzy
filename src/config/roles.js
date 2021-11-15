@@ -14,10 +14,11 @@ const getPermissionList = [
   'getQuestion', 'getQuestions',
   'getDashboard', 'getUserProfile',
   'getBranch', 'getBranches',
+  'getPackage', 'getPackages',
 ];
 const studentPermissionList = [];
 const tutorManagePermissionList = ['manageSubjects', 'manageClassroom', 'manageAssignment', 'manageQuiz', 'manageMotivationQuote', 'manageQuestion'];
-const adminManagePermissionList = ['manageUsers', 'manageState', 'manageCity', 'manageBranch'];
+const adminManagePermissionList = ['manageUsers', 'manageState', 'manageCity', 'manageBranch', 'managePackage'];
 
 roleRights.set(roles[0], studentPermissionList.concat(getPermissionList));
 roleRights.set(roles[1], tutorManagePermissionList.concat(getPermissionList, studentPermissionList));

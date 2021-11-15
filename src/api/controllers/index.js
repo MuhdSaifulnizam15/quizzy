@@ -11,4 +11,5 @@ module.exports = {
     questionController: require('./question.controller'),
     dashboardController: require('./dashboard.controller'),
     branchController: require('./branch.controller'),
+    packageController: require('./package.controller'),
 };

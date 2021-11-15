@@ -10,4 +10,5 @@ module.exports = {
     cityValidation: require('./city.validation'),
     questionValidation: require('./question.validation'),
     branchValidation: require('./branch.validation'),
+    packageValidation: require('./package.validation'),
 };

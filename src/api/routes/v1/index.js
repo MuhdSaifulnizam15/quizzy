@@ -11,6 +11,7 @@ const cityRoutes = require('./city.route');
 const questionRoutes = require('./question.route');
 const dashboardRoutes = require('./dashboard.route');
 const branchRoutes = require('./branch.route');
+const packageRoutes = require('./package.route');
 
 const router = express.Router();
 
@@ -68,6 +69,10 @@ const defaultRoutes = [
     {
       path: '/branch',
       route: branchRoutes,
+    },
+    {
+      path: '/package',
+      route: packageRoutes,
     },
 ];
 

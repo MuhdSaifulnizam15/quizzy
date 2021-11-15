@@ -13,4 +13,5 @@ module.exports = {
     questionService: require('./question.service'),
     dashboardService: require('./dashboard.service'),
     branchService: require('./branch.service'),
+    packageService: require('./package.service'),
 };
