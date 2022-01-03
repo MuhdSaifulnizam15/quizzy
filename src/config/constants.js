@@ -17,22 +17,29 @@ const questionTypes = {
 };
 
 const grade = {
-  'pass': 'PASS',
-  'fail': 'FAIL',
+  pass: 'PASS',
+  fail: 'FAIL',
 };
 
 
 const paymentStatus = {
-  'success': 'SUCCESS',
-  'pending': 'PENDING',
+  success: 'SUCCESS',
+  pending: 'PENDING',
 }
 
 const paymentMethod = {
-  'onlineTransfer': 'ONLINE TRANSFER',
-  'cash': 'CASH',
-  'cheque': 'CHEQUE',
-  'debitCard': 'DEBIT CARD',
-  'creditCard': 'CREDIT CARD',
+  onlineTransfer: 'ONLINE TRANSFER',
+  cash: 'CASH',
+  cheque: 'CHEQUE',
+  debitCard: 'DEBIT CARD',
+  creditCard: 'CREDIT CARD',
+}
+
+const examTypes = {
+  mcq: 'MCQ',
+  open: 'OPEN DISCUSSION',
+  fillInTheBlank: 'Fill in the blank',
+  trueFalse: 'True or False',
 }
 
 module.exports = {
@@ -42,4 +49,5 @@ module.exports = {
   grade,
   paymentStatus,
   paymentMethod,
+  examTypes,
 };

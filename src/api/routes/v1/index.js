@@ -21,7 +21,6 @@ const router = express.Router();
  */
 router.get('/status', (req, res) => res.send('OK'));
 
-// router.use('/users', userRoutes);
 const defaultRoutes = [
     {
       path: '/auth',
