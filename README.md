@@ -99,74 +99,74 @@ src\
 List of available routes:
 
 **Auth routes**:\
-`POST /v1/auth/register` - register\
-`POST /v1/auth/login` - login\
-`POST /v1/auth/refresh-tokens` - refresh auth tokens\
-`POST /v1/auth/forgot-password` - send reset password email\
-`POST /v1/auth/reset-password` - reset password
+`POST /api/v1/auth/register` - register\
+`POST /api/v1/auth/login` - login\
+`POST /api/v1/auth/refresh-tokens` - refresh auth tokens\
+`POST /api/v1/auth/forgot-password` - send reset password email\
+`POST /api/v1/auth/reset-password` - reset password
 
 **User routes**:\
-`POST /v1/users` - create a user\
-`GET /v1/users` - get all users\
-`GET /v1/users/:userId` - get user\
-`PATCH /v1/users/:userId` - update user\
-`DELETE /v1/users/:userId` - delete user
+`POST /api/v1/users` - create a user\
+`GET /api/v1/users` - get all users\
+`GET /api/v1/users/:userId` - get user\
+`PATCH /api/v1/users/:userId` - update user\
+`DELETE /api/v1/users/:userId` - delete user
 
 **Subject routes**:\
-`POST /v1/subjects` - create a subject\
-`GET /v1/subjects` - get all subjects\
-`GET /v1/subjects/:subjectId` - get subject\
-`PATCH /v1/subjects/:subjectId` - update subject\
-`DELETE /v1/subjects/:subjectId` - delete subject
+`POST /api/v1/subjects` - create a subject\
+`GET /api/v1/subjects` - get all subjects\
+`GET /api/v1/subjects/:subjectId` - get subject\
+`PATCH /api/v1/subjects/:subjectId` - update subject\
+`DELETE /api/v1/subjects/:subjectId` - delete subject
 
 **Classroom routes**:\
-`POST /v1/classrooms` - create a classroom\
-`GET /v1/classrooms` - get all classrooms\
-`GET /v1/classrooms/:classroomId` - get classroom\
-`PATCH /v1/classrooms/:classroomId` - update classroom\
-`DELETE /v1/classrooms/:classroomId` - delete classroom
+`POST /api/v1/classrooms` - create a classroom\
+`GET /api/v1/classrooms` - get all classrooms\
+`GET /api/v1/classrooms/:classroomId` - get classroom\
+`PATCH /api/v1/classrooms/:classroomId` - update classroom\
+`DELETE /api/v1/classrooms/:classroomId` - delete classroom
 
 **Quiz routes**:\
-`POST /v1/quizzes` - create a quiz\
-`GET /v1/quizzes` - get all quizzes\
-`GET /v1/quizzes/:quizId` - get quiz\
-`PATCH /v1/quizzes/:quizId` - update quiz\
-`DELETE /v1/quizzes/:quizId` - delete quiz
+`POST /api/v1/quizzes` - create a quiz\
+`GET /api/v1/quizzes` - get all quizzes\
+`GET /api/v1/quizzes/:quizId` - get quiz\
+`PATCH /api/v1/quizzes/:quizId` - update quiz\
+`DELETE /api/v1/quizzes/:quizId` - delete quiz
 
 **Assignment routes**:\
-`POST /v1/assignments` - create a assignment\
-`GET /v1/assignments` - get all assignments\
-`GET /v1/assignments/:assignmentId` - get assignment\
-`PATCH /v1/assignments/:assignmentId` - update assignment\
-`DELETE /v1/assignments/:assignmentId` - delete assignment
+`POST /api/v1/assignments` - create a assignment\
+`GET /api/v1/assignments` - get all assignments\
+`GET /api/v1/assignments/:assignmentId` - get assignment\
+`PATCH /api/v1/assignments/:assignmentId` - update assignment\
+`DELETE /api/v1/assignments/:assignmentId` - delete assignment
 
 **Motivational Quote routes**:\
-`POST /v1/quotes` - create a quote\
-`GET /v1/quotes` - get all quotes\
-`GET /v1/quotes/:quoteId` - get quote\
-`PATCH /v1/quotes/:quoteId` - update quote\
-`DELETE /v1/quotes/:quoteId` - delete quote
+`POST /api/v1/quotes` - create a quote\
+`GET /api/v1/quotes` - get all quotes\
+`GET /api/v1/quotes/:quoteId` - get quote\
+`PATCH /api/v1/quotes/:quoteId` - update quote\
+`DELETE /api/v1/quotes/:quoteId` - delete quote
 
 **State routes**:\
-`POST /v1/states` - create a state\
-`GET /v1/states` - get all states\
-`GET /v1/states/:stateId` - get state\
-`PATCH /v1/states/:stateId` - update state\
-`DELETE /v1/states/:stateId` - delete state
+`POST /api/v1/states` - create a state\
+`GET /api/v1/states` - get all states\
+`GET /api/v1/states/:stateId` - get state\
+`PATCH /api/v1/states/:stateId` - update state\
+`DELETE /api/v1/states/:stateId` - delete state
 
 **City routes**:\
-`POST /v1/city` - create a city\
-`GET /v1/city` - get all city\
-`GET /v1/city/state/:stateId` - get city by state\
-`GET /v1/city/:cityId` - get city\
-`PATCH /v1/city/:cityId` - update city\
-`DELETE /v1/city/:cityId` - delete city
+`POST /api/v1/city` - create a city\
+`GET /api/v1/city` - get all city\
+`GET /api/v1/city/state/:stateId` - get city by state\
+`GET /api/v1/city/:cityId` - get city\
+`PATCH /api/v1/city/:cityId` - update city\
+`DELETE /api/v1/city/:cityId` - delete city
 
 **Question routes**:\
-`POST /v1/questions` - create a question\
-`GET /v1/questions` - get all questions\
-`GET /v1/questions/:questionId` - get question\
-`GET /v1/questions/quiz/:quizId` - get question by quiz id\
-`GET /v1/questions/type/:quizType [mcq|fillInTheBlank|trueFalse]` - get question based on question type\
-`PATCH /v1/questions/:questionId` - update question\
-`DELETE /v1/questions/:questionId` - delete question
+`POST /api/v1/questions` - create a question\
+`GET /api/v1/questions` - get all questions\
+`GET /api/v1/questions/:questionId` - get question\
+`GET /api/v1/questions/quiz/:quizId` - get question by quiz id\
+`GET /api/v1/questions/type/:quizType [mcq|fillInTheBlank|trueFalse]` - get question based on question type\
+`PATCH /api/v1/questions/:questionId` - update question\
+`DELETE /api/v1/questions/:questionId` - delete question
