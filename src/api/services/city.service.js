@@ -1,17 +1,19 @@
 const httpStatus = require('http-status');
-const { City, State } = require('../models');
+const { City } = require('../models');
 const ApiError = require('../utils/ApiError');
+const { getStateByStateId } = require('./state.service');
 
 const createCity = async (userBody) => {
     if(await City.isNameTaken(userBody.name)) {
         throw new ApiError(httpStatus.BAD_REQUEST, 'city already exist.');
     }
-    const state = await State.find({ state_id: userBody.state_id });
+    const state = await getStateByStateId(userBody.state_id);
     if(!state){
         throw new ApiError(httpStatus.BAD_REQUEST, 'state not found.');
     }
-    userBody.state_id = state[0]._id;
+    userBody.state = state._id;
     const city = await City.create(userBody);
+    console.log(city);
     return city;
 };
 
@@ -23,7 +25,7 @@ const getAllCity = async (options) => {
 
 const getCityByStateId = async (stateId, options) => {
     options.populate = ['state_id'];
-    const city = await City.paginate({ state_id: stateId }, options);
+    const city = await City.paginate({ state: stateId }, options);
     return city;
 };
 

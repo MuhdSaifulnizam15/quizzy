@@ -8,6 +8,10 @@ const stateSchema = mongoose.Schema({
         required: true,
         unique: true
     },
+    state_id: {
+        type: Number,
+        required: true,
+    }
 });
 
 stateSchema.plugin(toJSON);

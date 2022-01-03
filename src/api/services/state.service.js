@@ -20,6 +20,10 @@ const getStateById = async (id) => {
     return State.findById(id);
 };
 
+const getStateByStateId = async (state_id) => {
+    return State.findOne({ state_id });
+}
+
 const updateStateById = async (stateId, updateBody) => {
     const state = await getStateById(stateId);
     if(!state){
@@ -45,4 +49,5 @@ module.exports = {
     getStateById,
     updateStateById,
     deleteStateById,
+    getStateByStateId,
 };
